@@ -52,7 +52,8 @@ public class Typist
      */
     public void burnOut(int turns)
     {
-
+        burntOut = true;
+        turnsRemaining = turns;
     }
 
     /**
