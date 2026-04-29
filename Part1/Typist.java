@@ -80,7 +80,7 @@ public class Typist
      */
     public double getAccuracy()
     {
-        return 0.0; // placeholder - replace with correct implementation
+        return typistAccuracy;
     }
 
     /**
@@ -92,7 +92,7 @@ public class Typist
      */
     public int getProgress()
     {
-        return 0; // placeholder - replace with correct implementation
+        return typistProgress;
     }
 
     /**
@@ -102,7 +102,7 @@ public class Typist
      */
     public String getName()
     {
-        return ""; // placeholder - replace with correct implementation
+        return typistName;
     }
 
     /**
@@ -112,7 +112,7 @@ public class Typist
      */
     public char getSymbol()
     {
-        return ' '; // placeholder - replace with correct implementation
+        return typistSymbol;
     }
 
     /**
@@ -123,7 +123,7 @@ public class Typist
      */
     public int getBurnoutTurnsRemaining()
     {
-        return 0; // placeholder - replace with correct implementation
+        return turnsRemaining;
     }
 
     /**
@@ -132,7 +132,9 @@ public class Typist
      */
     public void resetToStart()
     {
-
+        burntOut = false;
+        turnsRemaining = 0;
+        typistProgress = 0;
     }
 
     /**
@@ -142,7 +144,7 @@ public class Typist
      */
     public boolean isBurntOut()
     {
-        return false; // placeholder - replace with correct implementation
+        return burntOut;
     }
 
     /**
@@ -151,7 +153,7 @@ public class Typist
      */
     public void typeCharacter()
     {
-
+        typistProgress++;
     }
 
     /**
@@ -162,7 +164,14 @@ public class Typist
      */
     public void slideBack(int amount)
     {
-
+        if ((typistProgress - amount) < 0)
+        {
+            typistProgress = 0;
+        }
+        else
+        {
+            typistProgress -= amount;
+        }
     }
 
     /**
@@ -173,7 +182,14 @@ public class Typist
      */
     public void setAccuracy(double newAccuracy)
     {
-
+        if (newAccuracy > 1)
+        {
+            typistAccuracy = 1;
+        }
+        else if (newAccuracy < 0)
+        {
+            typistAccuracy = 0;
+        }
     }
 
     /**
@@ -183,7 +199,7 @@ public class Typist
      */
     public void setSymbol(char newSymbol)
     {
-
+        typistSymbol = newSymbol;
     }
 
 }
