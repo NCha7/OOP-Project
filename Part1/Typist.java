@@ -63,7 +63,14 @@ public class Typist
      */
     public void recoverFromBurnout()
     {
-
+        if (burntOut)
+        {
+            turnsRemaining --;
+        }
+        if (turnsRemaining == 0)
+        {
+            burntOut = false;
+        }
     }
 
     /**
