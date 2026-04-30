@@ -105,7 +105,18 @@ public class TypingRace
             } catch (Exception e) {}
         }
 
-        // TODO (Task 2a): Print the winner's name here
+        if (raceFinishedBy(seat1Typist))
+        {
+            System.out.println("The race was won by: " + seat1Typist.getName());
+        }
+        else if (raceFinishedBy(seat2Typist))
+        {
+            System.out.println("The race was won by: " + seat2Typist.getName());
+        }
+        else if (raceFinishedBy(seat3Typist))
+        {
+            System.out.println("The race was won by: " + seat3Typist.getName());
+        }
     }
 
     /**
