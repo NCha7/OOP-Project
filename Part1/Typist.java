@@ -6,8 +6,8 @@
  * He left a sticky note: "the slide-back thing is optional probably".
  * It is not optional. Good luck.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Nassim Chanane
+ * @version 30/04/26
  */
 public class Typist
 {
@@ -23,7 +23,7 @@ public class Typist
     Boolean burntOut = false;
     int turnsRemaining = 0;
     double typistAccuracy;
-
+    Boolean mistyped = false;
 
     // Constructor of class Typist
     /**
@@ -147,6 +147,11 @@ public class Typist
         return burntOut;
     }
 
+    public boolean hasMistyped()
+    {
+        return mistyped;
+    }
+
     /**
      * Advances the typist forward by one character along the passage.
      * Should only be called when the typist is not burnt out.
@@ -182,13 +187,13 @@ public class Typist
      */
     public void setAccuracy(double newAccuracy)
     {
-        if (newAccuracy > 1)
+        if (newAccuracy > 1.0)
         {
-            typistAccuracy = 1;
+            typistAccuracy = 1.0;
         }
-        else if (newAccuracy < 0)
+        else if (newAccuracy < 0.0)
         {
-            typistAccuracy = 0;
+            typistAccuracy = 0.0;
         }
     }
 
@@ -200,6 +205,11 @@ public class Typist
     public void setSymbol(char newSymbol)
     {
         typistSymbol = newSymbol;
+    }
+    
+    public void setMistyped(boolean bool)
+    {
+        mistyped = bool;
     }
 
 }

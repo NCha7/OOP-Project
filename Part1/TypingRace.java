@@ -150,6 +150,7 @@ public class TypingRace
         // Mistype check — the probability should reflect the typist's accuracy
         if (Math.random() < theTypist.getAccuracy() * MISTYPE_BASE_CHANCE)
         {
+            theTypist.setMistyped(true);
             theTypist.slideBack(SLIDE_BACK_AMOUNT);
         }
 
@@ -196,7 +197,7 @@ public class TypingRace
 
         multiplePrint('=', passageLength + 3);
         System.out.println();
-        System.out.println("  [zz] = burnt out    [<] = just mistyped");
+        System.out.println("  [~] = burnt out    [<] = just mistyped");
     }
 
     /**
@@ -227,6 +228,11 @@ public class TypingRace
             System.out.print('~');
             spacesAfter--; // symbol + ~ together take two characters
         }
+        if (theTypist.hasMistyped())
+        {
+            System.out.print('<');
+            spacesAfter--; // symbol + ~ together take two characters
+        }
 
         multiplePrint(' ', spacesAfter);
         System.out.print('|');
@@ -238,6 +244,13 @@ public class TypingRace
             System.out.print(theTypist.getName()
                 + " (Accuracy: " + theTypist.getAccuracy() + ")"
                 + " BURNT OUT (" + theTypist.getBurnoutTurnsRemaining() + " turns)");
+        }
+        else if (theTypist.hasMistyped())
+        {
+            System.out.print(theTypist.getName()
+                + " (Accuracy: " + theTypist.getAccuracy() + ")"
+                + " ← just mistyped");
+            theTypist.setMistyped(false);
         }
         else
         {
