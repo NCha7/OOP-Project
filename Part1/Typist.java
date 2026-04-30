@@ -195,6 +195,10 @@ public class Typist
         {
             typistAccuracy = 0.0;
         }
+        else
+        {
+            typistAccuracy = newAccuracy;
+        }
     }
 
     /**
